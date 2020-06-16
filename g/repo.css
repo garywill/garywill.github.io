@@ -1,0 +1,90 @@
+.project-name a {
+    text-decoration: none;
+    color: unset;
+}
+
+.repo-box{
+    display: inline-block !important;
+
+    padding: 7px 12px !important;
+
+    width: 270px !important;
+
+    background-color: #fff;
+    border: 1px solid #d1d5da;
+    border-radius: 5px;
+    
+    box-sizing: border-box;
+
+
+    word-wrap: break-word;
+
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    margin-bottom: 7px;
+}
+ 
+.repo-title-link{
+    box-sizing: border-box;
+    font-weight: 600 !important;
+    color: #0366d6;
+
+    list-style: none !important;
+
+    word-wrap: break-word;
+
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 16px;
+    line-height: 1.5;
+
+}
+
+
+.description{
+    flex: 1 0 auto;
+
+    display: block !important;
+
+    font-size: 14px !important;
+
+    margin-bottom: 0px !important;
+
+    margin-top: 8px !important;
+
+    color: #384049 !important;
+
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    box-sizing: border-box;
+
+    list-style: none !important;
+
+    word-wrap: break-word;
+
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    overflow: hidden;
+    height: 63px;
+}
+
+.lang-star-fork{
+    margin-bottom: 0 !important;
+
+    color: #0366d6;
+    text-decoration: none;
+
+    background-color: initial;
+
+    box-sizing: border-box;
+
+    font-size: 13px !important;
+
+    color: #586069 !important;
+
+    list-style: none !important;
+
+    word-wrap: break-word;
+    margin-top: 4px;
+}
