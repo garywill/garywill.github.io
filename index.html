@@ -2,308 +2,179 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Cayman</title>
+    <title>Garywill Repos Overview</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <link rel="stylesheet" href="css/normalize.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/cayman.css">
+    <link rel="stylesheet" href="g/repo.css">
+    <script type="text/javascript" src="g/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="g/repo.js" ></script>
+    <script type="text/javascript" id="stati_script" ></script>
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Cayman</h1>
-      <h2 class="project-tagline">A responsive theme for your project on GitHub Pages</h2>
-      <a href="#" class="btn">View on GitHub</a>
-      <a href="#" class="btn">Download .zip</a>
-      <a href="#" class="btn">Download .tar.gz</a>
-    </section>
+      <h1 class="project-name">
+      <a href="https://github.com/garywill">
+      <svg class="octicon octicon-mark-github v-align-middle" height="45" viewBox="0 0 16 16" version="1.1" width="45" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+      garywill</a>
+      </h1>
+      <h2 class="project-tagline">An overview of my<br>
+      use<sup>ful</sup> 👍 and use<sub>less</sub> 🤷 <br>
+      open source projects</h2>
 
-    <section class="main-content">
-      <p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>. <a href="https://github.com">Links</a> should be blue with no underlines (unless hovered over).</p>
-
-      <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
-
-      <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
-
-      <blockquote>
-      <p>There should be no margin above this first sentence.</p>
-
-      <p>Blockquotes should be a lighter gray with a gray border along the left side.</p>
-
-      <p>There should be no margin below this final sentence.</p>
-      </blockquote>
-
-      <h1>
-      <a id="user-content-header-1" class="anchor" href="#header-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Header 1</h1>
-
-      <p>This is a normal paragraph following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-
-      <h2>
-      <a id="user-content-header-2" class="anchor" href="#header-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Header 2</h2>
-
-      <blockquote>
-      <p>This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.</p>
-      </blockquote>
-
-      <h3>
-      <a id="user-content-header-3" class="anchor" href="#header-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Header 3</h3>
-
-      <pre><code>This is a code block following a header.</code></pre>
-
-      <h4>
-      <a id="user-content-header-4" class="anchor" href="#header-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Header 4</h4>
-
-      <ul class="task-list">
-      <li>This is an unordered list following a header.</li>
-      <li>This is an unordered list following a header.</li>
-      <li>This is an unordered list following a header.</li>
-      </ul>
-
-      <h5>
-      <a id="user-content-header-5" class="anchor" href="#header-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Header 5</h5>
-
-      <ol class="task-list">
-      <li>This is an ordered list following a header.</li>
-      <li>This is an ordered list following a header.</li>
-      <li>This is an ordered list following a header.</li>
-      </ol>
-
-      <h6>
-      <a id="user-content-header-6" class="anchor" href="#header-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Header 6</h6>
-
-      <table>
-      <thead>
-      <tr>
-      <th>What</th>
-      <th>Follows</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>A table</td>
-      <td>A header</td>
-      </tr>
-      <tr>
-      <td>A table</td>
-      <td>A header</td>
-      </tr>
-      <tr>
-      <td>A table</td>
-      <td>A header</td>
-      </tr>
-      </tbody>
-      </table>
-
-      <hr>
-
-      <p>There's a horizontal rule above and below this.</p>
-
-      <hr>
-
-      <p>Here is an unordered list:</p>
-
-      <ul class="task-list">
-      <li>Salt-n-Pepa</li>
-      <li>Bel Biv DeVoe</li>
-      <li>Kid 'N Play</li>
-      </ul>
-
-      <p>And an ordered list:</p>
-
-      <ol class="task-list">
-      <li>Michael Jackson</li>
-      <li>Michael Bolton</li>
-      <li>Michael Bublé</li>
-      </ol>
-
-      <p>And an unordered task list:</p>
-
-      <ul class="task-list">
-      <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" checked="" disabled=""> Create a sample markdown document</li>
-      <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" checked="" disabled=""> Add task lists to it</li>
-      <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled=""> Take a vacation</li>
-      </ul>
-
-      <p>And a "mixed" task list:</p>
-
-      <ul class="task-list">
-      <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled=""> Steal underpants</li>
-      <li>?</li>
-      <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled=""> Profit!</li>
-      </ul>
-
-      <p>And a nested list:</p>
-
-      <ul class="task-list">
-      <li>Jackson 5
-
-      <ul class="task-list">
-      <li>Michael</li>
-      <li>Tito</li>
-      <li>Jackie</li>
-      <li>Marlon</li>
-      <li>Jermaine</li>
-      </ul>
-      </li>
-      <li>TMNT
-
-      <ul class="task-list">
-      <li>Leonardo</li>
-      <li>Michelangelo</li>
-      <li>Donatello</li>
-      <li>Raphael</li>
-      </ul>
-      </li>
-      </ul>
-
-      <p>Definition lists can be used with HTML syntax. Definition terms are bold and italic.</p>
-
-      <dl>
-          <dt>Name</dt>
-          <dd>Godzilla</dd>
-          <dt>Born</dt>
-          <dd>1952</dd>
-          <dt>Birthplace</dt>
-          <dd>Japan</dd>
-          <dt>Color</dt>
-          <dd>Green</dd>
-      </dl>
-
-      <hr>
-
-      <p>Tables should have bold headings and alternating shaded rows.</p>
-
-      <table>
-      <thead>
-      <tr>
-      <th>Artist</th>
-      <th>Album</th>
-      <th>Year</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>Michael Jackson</td>
-      <td>Thriller</td>
-      <td>1982</td>
-      </tr>
-      <tr>
-      <td>Prince</td>
-      <td>Purple Rain</td>
-      <td>1984</td>
-      </tr>
-      <tr>
-      <td>Beastie Boys</td>
-      <td>License to Ill</td>
-      <td>1986</td>
-      </tr>
-      </tbody>
-      </table>
-
-      <p>If a table is too wide, it should condense down and/or scroll horizontally.</p>
-
-      <table>
-      <thead>
-      <tr>
-      <th>Artist</th>
-      <th>Album</th>
-      <th>Year</th>
-      <th>Label</th>
-      <th>Awards</th>
-      <th>Songs</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>Michael Jackson</td>
-      <td>Thriller</td>
-      <td>1982</td>
-      <td>Epic Records</td>
-      <td>Grammy Award for Album of the Year, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Selling Album, Grammy Award for Best Engineered Album, Non-Classical</td>
-      <td>Wanna Be Startin' Somethin', Baby Be Mine, The Girl Is Mine, Thriller, Beat It, Billie Jean, Human Nature, P.Y.T. (Pretty Young Thing), The Lady in My Life</td>
-      </tr>
-      <tr>
-      <td>Prince</td>
-      <td>Purple Rain</td>
-      <td>1984</td>
-      <td>Warner Brothers Records</td>
-      <td>Grammy Award for Best Score Soundtrack for Visual Media, American Music Award for Favorite Pop/Rock Album, American Music Award for Favorite Soul/R&amp;B Album, Brit Award for Best Soundtrack/Cast Recording, Grammy Award for Best Rock Performance by a Duo or Group with Vocal</td>
-      <td>Let's Go Crazy, Take Me With U, The Beautiful Ones, Computer Blue, Darling Nikki, When Doves Cry, I Would Die 4 U, Baby I'm a Star, Purple Rain</td>
-      </tr>
-      <tr>
-      <td>Beastie Boys</td>
-      <td>License to Ill</td>
-      <td>1986</td>
-      <td>Mercury Records</td>
-      <td>noawardsbutthistablecelliswide</td>
-      <td>Rhymin &amp; Stealin, The New Style, She's Crafty, Posse in Effect, Slow Ride, Girls, (You Gotta) Fight for Your Right, No Sleep Till Brooklyn, Paul Revere, Hold It Now, Hit It, Brass Monkey, Slow and Low, Time to Get Ill</td>
-      </tr>
-      </tbody>
-      </table>
-
-      <hr>
-
-      <p>Code snippets like <code>var foo = "bar";</code> can be shown inline.</p>
-
-      <p>Also, <code>this should vertically align</code> <del><code>with this</code></del> <del>and this</del>.</p>
-
-      <p>Code can also be shown in a block element.</p>
-
-      <pre><code>var foo = "bar";
-</code></pre>
-
-      <p>Code can also use syntax highlighting.</p>
-
-      <div class="highlight highlight-Javascript"><pre><span class="pl-k">var</span> foo <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>bar<span class="pl-pds">"</span></span>;</pre></div>
-
-      <pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.</code></pre>
-
-      <div class="highlight highlight-Javascript"><pre><span class="pl-k">var</span> foo <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.<span class="pl-pds">"</span></span>;</pre></div>
-
-      <p>Inline code inside table cells should still be distinguishable.</p>
-
-      <table>
-      <thead>
-      <tr>
-      <th>Language</th>
-      <th>Code</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>Javascript</td>
-      <td><code>var foo = "bar";</code></td>
-      </tr>
-      <tr>
-      <td>Ruby</td>
-      <td><code>foo = "bar"</code></td>
-      </tr>
-      </tbody>
-      </table>
-
-      <hr>
-
-      <p>Small images should be shown at their actual size.</p>
-
-      <p><a href="https://camo.githubusercontent.com/16a9d5241f679b6429fc0597f10816dd2665bbb2/687474703a2f2f706c6163656b697474656e2e636f6d2f672f3330302f3230302f" target="_blank"><img src="https://camo.githubusercontent.com/16a9d5241f679b6429fc0597f10816dd2665bbb2/687474703a2f2f706c6163656b697474656e2e636f6d2f672f3330302f3230302f" alt="" data-canonical-src="https://placekitten.com/g/300/200/" style="max-width:100%;"></a></p>
-
-      <p>Large images should always scale down and fit in the content container.</p>
-
-      <p><a href="https://camo.githubusercontent.com/afe46418285497605cf4f6376b75f8c818658fb1/687474703a2f2f706c6163656b697474656e2e636f6d2f672f313230302f3830302f" target="_blank"><img src="https://camo.githubusercontent.com/afe46418285497605cf4f6376b75f8c818658fb1/687474703a2f2f706c6163656b697474656e2e636f6d2f672f313230302f3830302f" alt="" data-canonical-src="https://placekitten.com/g/1200/800/" style="max-width:100%;"></a></p>
-
-      <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/jasonlong/cayman-theme">Cayman</a> is maintained by <a href="https://github.com/jasonlong">jasonlong</a>.</span>
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-      </footer>
+      <a href="https://garywill.github.io/enblog/" class="btn" target="_blank" >English Blog ✍️<span style="font-size: 90%;"></span></a>
+      <a href="https://www.youtube.com/channel/UCB1VyKqq7yGpE_P3G37_4EA" class="btn" target="_blank" >Youtube 📺<span style="font-size: 90%;"></span></a>
+      <a href="https://twitter.com/garyw_gh" class="btn" target="_blank" >Twitter<span style="font-size: 90%;"></span></a>
+      <a href="https://github.com/garywill/receiving/blob/master/receiving_methods.md" class="btn" target="_blank" >Donate ❤️<span style="font-size: 90%;"></span></a>
+      <a href="https://www.cnblogs.com/garyw/" class="btn" target="_blank" >中文博客 ✍️<span style="font-size: 90%;"></span></a>
+      <a href="https://garywill.github.io/chiblog/" class="btn" target="_blank" >中文博客 ✍️ （备份）<span style="font-size: 90%;"></span></a>
+      <a href="https://space.bilibili.com/2123686105" class="btn" target="_blank" >哔哩哔哩 📺<span style="font-size: 90%;"></span></a>
 
     </section>
+
+    <div class="container">
+        <section class="toc" style="text-align: center; margin-top:20px;">
+            Navigation: &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#Linux-Tools">Linux Tools</a>
+            &nbsp;·&nbsp;
+            <a href="#Browser-Addons">Browser Addons</a>
+            &nbsp;·&nbsp;
+            <a href="#Firefox-userChrome-CSS-or-JS">Firefox Scripts</a>
+            &nbsp;·&nbsp;
+            <a href="#Chinese">中文及漢字類</a>
+        </section>
+        <section class="main-content">
+
+            <h2 d="🥇🥈🥉🏅🏆" >
+                Featured Projects
+            </h2>
+            
+            <div class="repos-window">
+                <div class="repo-box silver-repo" owner="garywill" reponame="linux-router"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="BigSearch"></div>
+            </div>
+            
+            <h2>
+                <a id="Linux-Tools" ></a>
+                Linux Tools
+            </h2>
+            
+
+            <div class="repos-window">
+                <div class="repo-box gold-repo" owner="garywill" reponame="linux-router"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="qrshot"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="wineprc"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="proxc"></div>
+                <div class="repo-box" owner="garywill" reponame="apkinfo"></div>
+                <div class="repo-box" owner="garywill" reponame="zypper_little_tools"></div>
+                <div class="repo-box" owner="garywill" reponame="multiBootUDisk"></div>
+<!--                 <div class="repo-box" owner="garywill" reponame="sbrew"></div> -->
+            </div>
+            
+            <h2>
+                <a id="Browser-Addons" ></a>
+                Browser Addons
+            </h2>
+            
+            <div class="repos-window">
+                <div class="repo-box gold-repo" owner="garywill" reponame="BigSearch"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="multi-subs-yt"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="autoReferer"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="LAN-port-scan-forbidder"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="toggle-webrtc"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="toggleWebCustomFont"></div>
+                <div class="repo-box" owner="garywill" reponame="newTabClipboardUrl"></div>
+                <div class="repo-box" owner="garywill" reponame="know-server-better"></div>
+                <div class="repo-box" owner="garywill" reponame="switch-between-http-s"></div>
+                <div class="repo-box" owner="garywill" reponame="vert-cjk-web"></div>
+
+            </div>
+
+            <blockquote>
+                Although I made several privacy-protecting addons, I'm not a hacker or security expert.
+            </blockquote>
+
+
+            <h2>
+                <a id="Firefox-userChrome-CSS-or-JS" ></a>
+                Firefox userChrome Scripts
+            </h2>
+            
+            <div class="repos-window">
+                <div class="repo-box silver-repo" owner="garywill" reponame="FirefoxTaskMonitor"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="aboutconfig-menu"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="sidebar-switch"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="native-extern-dl"></div>
+                <div class="repo-box" owner="garywill" reponame="tabs-at-bottom"></div>
+                <div class="repo-box" owner="garywill" reponame="right-click-tab-close"></div>
+                <div class="repo-box" owner="garywill" reponame="newtab-btn-menu"></div>
+            </div>
+            
+            <div>
+                Above userChrome scripts contain only the specific function, not the code needed to enable script.
+                <br>
+
+                For <b>method to enable</b>, see: (not limited to the methods below)
+                <br>
+                <ul>
+                    <li>
+                        <a href="https://github.com/xiaoxiaoflood/firefox-scripts" target="_blank">https://github.com/xiaoxiaoflood/firefox-scripts</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Aris-t2/CustomJSforFx" target="_blank">https://github.com/Aris-t2/CustomJSforFx</a>
+                    </li>
+                    <li>
+                        <a href="https://garywill.github.io/enblog/post/ucjs/" target="_blank">A brief introduction &amp; tutorial about how to start with and write uc.js</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <h2>
+                <a id="Web" ></a>
+                Web
+            </h2>
+            
+            <div class="repos-window">
+                <div class="repo-box gold-repo" owner="garywill" reponame="BigSearch"></div>
+                <div class="repo-box" owner="garywill" reponame="garywill.github.io"></div>
+            </div>
+            
+            <h2>
+                <a id="Chinese" ></a>
+                中文
+            </h2>
+            
+            <div class="repos-window">
+                <div class="repo-box silver-repo" owner="garywill" reponame="cc-visualize"></div>
+                <div class="repo-box silver-repo" owner="garywill" reponame="vert-cjk-web"></div>
+                <div class="repo-box " owner="garywill" reponame="bash-edit-cnblogs-metaweblog"></div>
+            </div>
+
+            <footer style="font-size: 70%;" class="site-footer">
+                <span class="site-footer-owner">This <a href="https://github.com/garywill/garywill.github.io">Github style window display page</a> is made by <a href="https://github.com/garywill">garywill</a>. 
+                <br>
+                This page uses <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> which is maintained by <a href="https://github.com/jasonlong">jasonlong</a>.</span>
+                <span class="site-footer-credits">
+                Cayman theme is licensed under <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> license.
+                </span>
+            </footer>
+        
+        </section>
+        
+        
+    </div>
+    
+
+      
+    
+    <img style="width: 1px; max-width: 1px; height: 1px; max-height: 1px;" id="stati_51" />
+    
+    
+
+
+
 
   </body>
 </html>
