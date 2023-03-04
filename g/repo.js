@@ -177,11 +177,6 @@ async function getGithubRepoInfo(owner, reponame)
 
 onrd.push(function(){
     setTimeout(function(){
-        $("#stati_51").attr("src","https://ia.51.la/go1?id=20914137&pvFlag=1");
-        
-        
-
-
         var _paq = window._paq = window._paq || [];
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(["setCookieDomain", "*.garywill.github.io"]);
