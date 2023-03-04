@@ -177,7 +177,6 @@ async function getGithubRepoInfo(owner, reponame)
 
 onrd.push(function(){
     setTimeout(function(){
-        $("#stati_script").attr("src","https://v1.cnzz.com/z_stat.php?id=1279016180&web_id=1279016180");
         $("#stati_51").attr("src","https://ia.51.la/go1?id=20914137&pvFlag=1");
         
         
@@ -190,7 +189,7 @@ onrd.push(function(){
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-            var u="//acsearch.cf/mpx/";
+            var u="https://hellomtm.versioncheck.workers.dev/";
             _paq.push(['setTrackerUrl', u+'matomo.php']);
             _paq.push(['setSiteId', '3']);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];

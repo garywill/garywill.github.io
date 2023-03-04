@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark" data-a11y-animated-images="system" data-turbo-loaded="" >
+    <head>
+        <meta charset="utf-8">
+        <title>Linux-router</title>
+        <link rel='stylesheet' type='text/css' href='../../global.css'></link> 
+        <link rel='stylesheet' type='text/css' href='../../light.css'></link> 
+        <link rel='stylesheet' type='text/css' href='../../primer.css'></link> 
+        
+<!--         https://github.com/tscanlin/tocbot -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+      
+<!--         <script src="DocumentOutline.js"></script> -->
+<!--         <link rel='stylesheet' type='text/css' href='DocumentOutline.css'></link>  -->
+        <style>
+            .imtr-target-inner {
+                border-radius: 5px;
+                border: 1px solid #00aa00;
+            }
+            #head_banner {
+                z-index: 100;
+                text-align: center;
+                position: sticky;
+                top: 0px;
+                background-color: #ffffff88;
+                box-shadow: 0px 2px 3px gray;
+                padding-bottom: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #cont {
+                width: 100vw;
+            }
+            #center_in_cont{
+                display: flex;
+                justify-content: center;
+                margin: 10px;
+/*                 margin-top: 90px; */
+            }
+            #readme_cont {
+                padding: 10px;
+                max-width: min(800px, calc(100vw - 100px) );
+            }
+            .zeroclipboard-container{
+                display: none !important;
+            }
+            #sidebar_left {
+                max-width: 300px;
+                width: 300px;
+                min-width: 100px;
+            }
+            .toc-list {
+                padding-left: 23px;
+            }
+            #div_toc{
+                position: sticky;
+                top: 0px;
+                overflow-y: scroll;
+            }
+            
+        </style>
+        
+         <script src="../../js.js"></script>
+    </head>
+    <body>
+        <div id="cont">
+            
+            <div id="center_in_cont">
+                
+                <div id="sidebar_left">
+                    <div id="div_toc"></div>
+                </div>                
+                
+                <div id="main_contents"> 
+                
+                
+                    <div id="head_banner">
+                        <div>
+                            <a href="https://github.com/garywill/linux-router">
+                              <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+                                <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                              </svg>
+                            </a>
+                        </div>
+
+                    
+                        <div >
+
+                          <div>
+                              You are reading doc of <a href="https://github.com/garywill/linux-router">Linux-router</a>. For more up-to-date content, visit Github.
+                          </div>
+                          
+                          <div>
+                            <a href="../en/">English</a> | <a href="../zh/">中文</a> | <a href="../es/">Español</a> | <a href="../ru/">Русский язык</a>
+                          </div>
+                          
+                        </div>
+                        
+                    </div>
+                    
+                    <div id="readme_cont" class="markdown-body">
+                      <h1 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-linux-router" class="anchor" aria-hidden="true" href="#linux-router" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Linux-router</font></h1>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Set Linux as router in one command. Able to provide Internet, or create WiFi hotspot. Support transparent proxy (redsocks). Also useful for routing VM/containers.<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-70" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在一个命令中将 Linux 设置为路由器。能够提供互联网，或创建WiFi热点。支持透明代理（红袜）。对于路由虚拟机/容器也很有用。</font></font></font></font></p>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">It wraps </font><code data-imtr-effect="1">iptables</code><font data-imtr-effect="1">, </font><code data-imtr-effect="1">dnsmasq</code><font data-imtr-effect="1"> etc. stuff. Use in one command, restore in one command or by </font><code data-imtr-effect="1">control-c</code><font data-imtr-effect="1"> (or even by closing terminal window).</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-71" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">它包装 <code data-imtr-effect="1">iptables</code> 、 <code data-imtr-effect="1">dnsmasq</code> 等。东西。在一个命令中使用，在一个命令中或通过 <code data-imtr-effect="1">control-c</code> 恢复（甚至通过关闭终端窗口）。</font></font></font></p>
+<p dir="auto" data-imtr-effect="1"><a href="https://github.com/garywill/linux-router/issues/28" data-hovercard-type="issue" data-hovercard-url="/garywill/linux-router/issues/28/hovercard" data-imtr-effect="1">Linux-Router News &amp; Developer Notes <g-emoji class="g-emoji" alias="newspaper" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4f0.png" data-imtr-effect="1"><img class="emoji" alt="newspaper" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4f0.png" width="20" height="20"></g-emoji></a><font data-imtr-effect="1"> | </font><a href="https://garywill.github.io" rel="nofollow" data-imtr-effect="1">More tools and projects <g-emoji class="g-emoji" alias="hammer_and_wrench" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" data-imtr-effect="1"><img class="emoji" alt="hammer_and_wrench" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" width="20" height="20"></g-emoji></a><font data-imtr-effect="1"> | </font><a href="https://github.com/garywill/receiving/blob/master/receiving_methods.md" data-imtr-effect="1"><g-emoji class="g-emoji" alias="beers" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f37b.png" data-imtr-effect="1"><img class="emoji" alt="beers" src="https://github.githubassets.com/images/icons/emoji/unicode/1f37b.png" width="20" height="20"></g-emoji> Buy me a coffee <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" data-imtr-effect="1"><img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="20" height="20"></g-emoji></a><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-72" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">Linux-Router News &amp; Developer Notes <g-emoji class="g-emoji" alias="newspaper" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4f0.png" data-imtr-effect="1"><img class="emoji" alt="newspaper" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4f0.png" width="20" height="20"></g-emoji> |更多工具和项目 <g-emoji class="g-emoji" alias="hammer_and_wrench" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" data-imtr-effect="1"><img class="emoji" alt="hammer_and_wrench" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" width="20" height="20"></g-emoji> | <g-emoji class="g-emoji" alias="beers" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f37b.png" data-imtr-effect="1"><img class="emoji" alt="beers" src="https://github.githubassets.com/images/icons/emoji/unicode/1f37b.png" width="20" height="20"></g-emoji> 请我喝杯咖啡 <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" data-imtr-effect="1"><img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="20" height="20"></g-emoji> </font></font></font></p>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-features" class="anchor" aria-hidden="true" href="#features" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Features</font></h2>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Basic features:</font></p>
+<ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">Create a NATed sub-network<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-73" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">创建 NAT 子网</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Provide Internet</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">DHCP server (and RA)
+<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-74" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">DHCP 服务器（和 RA）</font></font></font></font><ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">Specify what DNS the DHCP server assigns to clients<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-75" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">指定 DHCP 服务器分配给客户端的 DNS</font></font></font></font></li>
+</ul>
+</li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">DNS server
+</font><ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">Specify upstream DNS (kind of a plain DNS proxy)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-76" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">指定上游 DNS（一种普通 DNS 代理）</font></font></font></font></li>
+</ul>
+</li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">IPv6 (behind NATed LAN, like IPv4)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-77" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">IPv6（在 NAT LAN 后面，如 IPv4）</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Creating WiFi hotspot:
+<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-78" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">创建无线网络热点：</font></font></font></font><ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">Channel selecting</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Choose encryptions: WPA2/WPA, WPA2, WPA, No encryption<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-79" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">选择加密：WPA2/WPA、WPA2、WPA、无加密</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Create AP on the same interface you are getting Internet (usually require same channel)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-80" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在您获得互联网的同一接口上创建 AP（通常需要相同的信道）</font></font></font></font></li>
+</ul>
+</li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Transparent proxy (redsocks)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-81" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">透明代理（红袜子）</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Transparent DNS proxy (hijack port 53 packets)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-82" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">透明 DNS 代理（劫持端口 53 数据包）</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Detect NetworkManager and make sure it won't interfere (handle interface (un)managed status)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-83" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">检测网络管理器并确保它不会干扰（处理接口（未）托管状态）</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">You can run many instances, to create many different networks. Has instances managing feature.<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-84" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">您可以运行许多实例来创建许多不同的网络。具有实例管理功能。</font></font></font></font></li>
+</ul>
+<p dir="auto" data-imtr-effect="1"><strong data-imtr-effect="1">For many other features, see below <a href="#cli-usage-and-other-features">CLI usage<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-85" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">有关许多其他功能，请参阅下面的 CLI 用法</font></font></font></a></strong></p>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-useful-in-these-situations" class="anchor" aria-hidden="true" href="#useful-in-these-situations" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Useful in these situations<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-86" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在这些情况下很有用</font></font></font></font></h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>Internet----(eth0/wlan0)-Linux-(wlanX)AP
+                                       |--client
+                                       |--client
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Internet----(eth0/wlan0)-Linux-(wlanX)AP
+                                       |--client
+                                       |--client" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>                                    Internet
+WiFi AP(no DHCP)                        |
+    |----(wlan1)-Linux-(eth0/wlan0)------
+    |           (DHCP)
+    |--client
+    |--client
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="                                    Internet
+WiFi AP(no DHCP)                        |
+    |----(wlan1)-Linux-(eth0/wlan0)------
+    |           (DHCP)
+    |--client
+    |--client" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>                                    Internet
+ Switch                                 |
+    |---(eth1)-Linux-(eth0/wlan0)--------
+    |--client
+    |--client
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="                                    Internet
+ Switch                                 |
+    |---(eth1)-Linux-(eth0/wlan0)--------
+    |--client
+    |--client" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>Internet----(eth0/wlan0)-Linux-(eth1)------Another PC
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Internet----(eth0/wlan0)-Linux-(eth1)------Another PC" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>Internet----(eth0/wlan0)-Linux-(virtual interface)-----VM/container
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Internet----(eth0/wlan0)-Linux-(virtual interface)-----VM/container" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-install" class="anchor" aria-hidden="true" href="#install" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Install</font></h2>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">1-file-script. Release on </font><a href="https://github.com/garywill/linux-router" data-imtr-effect="1">Linux-router repo on Github</a><font data-imtr-effect="1">. Download and run the bash script (meet the dependencies).</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-87" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">1 文件脚本。在 Github 上的 Linux 路由器存储库上发布。下载并运行 bash 脚本（满足依赖项）。</font></font></font></p>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">I'm currently not packaging for any distro. If you do, open a PR and add the link (can be with a version badge) to list here:<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-88" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">我目前没有打包任何发行版。如果这样做，请打开 PR 并添加链接（可以带有版本徽章）以在此处列出：</font></font></font></font></p>
+</blockquote>
+<table data-imtr-effect="1">
+<thead data-imtr-effect="1">
+<tr data-imtr-effect="1">
+<th data-imtr-effect="1"><font data-imtr-effect="1">Linux distro</font></th>
+<th data-imtr-effect="1"></th>
+</tr>
+</thead>
+<tbody data-imtr-effect="1">
+<tr data-imtr-effect="1">
+<td data-imtr-effect="1"><font data-imtr-effect="1">Any</font></td>
+<td data-imtr-effect="1"><font data-imtr-effect="1">download </font><a href="https://raw.githubusercontent.com/garywill/linux-router/master/lnxrouter" rel="nofollow" data-imtr-effect="1">1-file-script</a><font data-imtr-effect="1"> and run</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-89" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">下载 1 个文件脚本并运行</font></font></font></td>
+</tr>
+</tbody>
+</table>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-dependencies" class="anchor" aria-hidden="true" href="#dependencies" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Dependencies</font></h2>
+<ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">bash</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">procps or procps-ng<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-90" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">procps 或 procps-ng</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">iproute2</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">dnsmasq</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">iptables (or nftables with </font><code data-imtr-effect="1">iptables-nft</code><font data-imtr-effect="1"> translation linked)</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-91" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">iptables（或链接了 <code data-imtr-effect="1">iptables-nft</code> 翻译的 NFTABLE）</font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">WiFi hotspot dependencies
+<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-92" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">WiFi 热点依赖关系</font></font></font></font><ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">hostapd</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">iw</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">iwconfig (you only need this if 'iw' can not recognize your adapter)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-93" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">iwconfig（只有当“iw”无法识别您的适配器时，您才需要它）</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">haveged (optional)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-94" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">哈夫德（可选）</font></font></font></font></li>
+</ul>
+</li>
+</ul>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-usage" class="anchor" aria-hidden="true" href="#usage" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Usage</font></h2>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-provide-internet-to-an-interface" class="anchor" aria-hidden="true" href="#provide-internet-to-an-interface" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Provide Internet to an interface<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-95" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">为接口提供互联网</font></font></font></font></h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i eth1
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i eth1" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">no matter which interface (other than </font><code data-imtr-effect="1">eth1</code><font data-imtr-effect="1">) you're getting Internet from.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-96" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">无论您从哪个接口（ <code data-imtr-effect="1">eth1</code> 除外）获取互联网。</font></font></font></p>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-create-wifi-hotspot" class="anchor" aria-hidden="true" href="#create-wifi-hotspot" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Create WiFi hotspot<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-97" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">创建无线网络热点</font></font></font></font></h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter --ap wlan0 MyAccessPoint -p MyPassPhrase
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter --ap wlan0 MyAccessPoint -p MyPassPhrase" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">no matter which interface you're getting Internet from (even from </font><code data-imtr-effect="1">wlan0</code><font data-imtr-effect="1">). Will create virtual Interface </font><code data-imtr-effect="1">x0wlan0</code><font data-imtr-effect="1"> for hotspot.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-98" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">无论您从哪个接口获取互联网（甚至从 <code data-imtr-effect="1">wlan0</code> ）。将为热点创建虚拟接口 <code data-imtr-effect="1">x0wlan0</code> 。</font></font></font></p>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-provide-an-interfaces-internet-to-another-interface" class="anchor" aria-hidden="true" href="#provide-an-interfaces-internet-to-another-interface" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Provide an interface's Internet to another interface<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-99" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">将一个接口的互联网提供给另一个接口</font></font></font></font></h3>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Clients access Internet through only </font><code data-imtr-effect="1">isp5</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-100" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">客户端仅通过 <code data-imtr-effect="1">isp5</code> 访问互联网</font></font></font></p>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i eth1 -o isp5  --no-dns  --dhcp-dns 1.1.1.1  -6 --dhcp-dns6 [2606:4700:4700::1111]
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i eth1 -o isp5  --no-dns  --dhcp-dns 1.1.1.1  -6 --dhcp-dns6 [2606:4700:4700::1111]" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">In this case of usage, it's recommended to:<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-140" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">在这种情况下，建议：</font></font></font></font></p>
+<ol dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">Stop serving local DNS<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-141" lang="zh-CN"><font class="notranslate">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">停止提供本地 DNS 服务</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Tell clients which DNS to use ISP5's DNS. (Or, a safe public DNS, like above example)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-142" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">告诉客户端哪个 DNS 使用 ISP5 的 DNS。（或者，一个安全的公共 DNS，如上例所示）</font></font></font></font></li>
+</ol>
+</blockquote>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Also, read </font><em data-imtr-effect="1">Notice 1</em><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-143" lang="zh-CN"><font class="notranslate">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">另请阅读通知 1</font></font></font></p>
+</blockquote>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-create-lan-without-providing-internet" class="anchor" aria-hidden="true" href="#create-lan-without-providing-internet" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Create LAN without providing Internet<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-101" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在不提供互联网的情况下创建局域网</font></font></font></font></h3>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -n -i eth1
+sudo lnxrouter -n --ap wlan0 MyAccessPoint -p MyPassPhrase
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -n -i eth1
+sudo lnxrouter -n --ap wlan0 MyAccessPoint -p MyPassPhrase" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Read </font><em data-imtr-effect="1">Notice 1</em><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-144" lang="zh-CN"><font class="notranslate">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">阅读通知 1</font></font></font></p>
+</blockquote>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-internet-for-lxc" class="anchor" aria-hidden="true" href="#internet-for-lxc" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Internet for LXC<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-102" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">LXC的互联网</font></font></font></font></h3>
+<details data-imtr-effect="1" open="">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Create a bridge<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-135" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">创建网桥</font></font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo brctl addbr lxcbr5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo brctl addbr lxcbr5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">In LXC container </font><code data-imtr-effect="1">config</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-136" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在 LXC 容器中 <code data-imtr-effect="1">config</code> </font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = lxcbr5
+lxc.network.hwaddr = xx:xx:xx:xx:xx:xx
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = lxcbr5
+lxc.network.hwaddr = xx:xx:xx:xx:xx:xx" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i lxcbr5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i lxcbr5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-transparent-proxy" class="anchor" aria-hidden="true" href="#transparent-proxy" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Transparent proxy</font></h3>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">All clients' Internet traffic go through, for example, Tor (notice this example is NOT an anonymity use)<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-103" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">例如，所有客户端的互联网流量都通过Tor（请注意，此示例不是匿名使用）</font></font></font></font></p>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i eth1 --tp 9040 --dns 9053 -g 192.168.55.1 -6 --p6 fd00:5:6:7::
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i eth1 --tp 9040 --dns 9053 -g 192.168.55.1 -6 --p6 fd00:5:6:7::" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">In </font><code data-imtr-effect="1">torrc</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-137" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在 @0 中#</font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>TransPort 192.168.55.1:9040 
+DNSPort 192.168.55.1:9053
+TransPort [fd00:5:6:7::1]:9040 
+DNSPort [fd00:5:6:7::1]:9053
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="TransPort 192.168.55.1:9040 
+DNSPort 192.168.55.1:9053
+TransPort [fd00:5:6:7::1]:9040 
+DNSPort [fd00:5:6:7::1]:9053" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><strong data-imtr-effect="1">Warn</strong><font data-imtr-effect="1">: Tor's anonymity relies on a purpose-made browser. Using Tor like this (sharing Tor's network to LAN clients) will NOT ensure anonymity.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-138" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">警告：Tor的匿名性依赖于专用的浏览器。像这样使用 Tor（将 Tor 的网络共享给 LAN 客户端）并不能确保匿名性。</font></font></font></p>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Although we use Tor as example here, Linux-router does NOT ensure nor is NOT aiming at anonymity.<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-139" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">虽然我们在这里使用 Tor 作为示例，但 Linux 路由器并不能确保也不以匿名为目标。</font></font></font></font></p>
+</blockquote>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-clients-in-sandbox-network" class="anchor" aria-hidden="true" href="#clients-in-sandbox-network" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Clients-in-sandbox network<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-104" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">沙盒中的客户端网络</font></font></font></font></h3>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">To not give our infomation to clients. Clients can still access Internet.<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-105" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">不向客户提供我们的信息。客户端仍然可以访问互联网。</font></font></font></font></p>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i eth1 \
+    --tp 9040 --dns 9053 \
+    --random-mac \
+    --ban-priv \
+    --catch-dns --log-dns   # optional
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i eth1 \
+    --tp 9040 --dns 9053 \
+    --random-mac \
+    --ban-priv \
+    --catch-dns --log-dns   # optional" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Linux-router comes with no warranty. Use on your own risk<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-106" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">Linux路由器不提供任何保修。使用风险自负</font></font></font></font></p>
+</blockquote>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-use-as-transparent-proxy-for-lxd" class="anchor" aria-hidden="true" href="#use-as-transparent-proxy-for-lxd" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Use as transparent proxy for LXD<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-107" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">用作 LXD 的透明代理</font></font></font></font></h3>
+<details data-imtr-effect="1" open="">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Create a bridge<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-145" lang="zh-CN"><font class="notranslate">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">创建网桥</font></font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo brctl addbr lxdbr5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo brctl addbr lxdbr5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Create and add a new LXD profile overriding container's </font><code data-imtr-effect="1">eth0</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-146" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">创建并添加新的 LXD 配置文件，覆盖容器的 <code data-imtr-effect="1">eth0</code> </font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>lxc profile create profile5
+lxc profile edit profile5
+
+### profile content ###
+config: {}
+description: ""
+devices:
+  eth0:
+    name: eth0
+    nictype: bridged
+    parent: lxdbr5
+    type: nic
+name: profile5
+
+lxc profile add &lt;container&gt; profile5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="lxc profile create profile5
+lxc profile edit profile5
+
+### profile content ###
+config: {}
+description: &quot;&quot;
+devices:
+  eth0:
+    name: eth0
+    nictype: bridged
+    parent: lxdbr5
+    type: nic
+name: profile5
+
+lxc profile add <container> profile5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i lxdbr5 --tp 9040 --dns 9053
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i lxdbr5 --tp 9040 --dns 9053" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">To remove that new profile from container<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-147" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">从容器中删除该新配置文件</font></font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>lxc profile remove &lt;container&gt; profile5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="lxc profile remove <container> profile5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<h4 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-to-not-use-profile" class="anchor" aria-hidden="true" href="#to-not-use-profile" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">To not use profile<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-148" lang="zh-CN"><font class="notranslate">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">不使用配置文件</font></font></font></font></h4>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Add new </font><code data-imtr-effect="1">eth0</code><font data-imtr-effect="1"> to container overriding default </font><code data-imtr-effect="1">eth0</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-149" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">将新的 <code data-imtr-effect="1">eth0</code> 添加到容器覆盖默认 <code data-imtr-effect="1">eth0</code> </font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>lxc config device add &lt;container&gt; eth0 nic name=eth0 nictype=bridged parent=lxdbr5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="lxc config device add <container> eth0 nic name=eth0 nictype=bridged parent=lxdbr5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">To remove the customized </font><code data-imtr-effect="1">eth0</code><font data-imtr-effect="1"> to restore default </font><code data-imtr-effect="1">eth0</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-150" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">删除自定义 <code data-imtr-effect="1">eth0</code> 以恢复默认 <code data-imtr-effect="1">eth0</code> </font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>lxc config device remove &lt;container&gt; eth0
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="lxc config device remove <container> eth0" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-use-as-transparent-proxy-for-virtualbox" class="anchor" aria-hidden="true" href="#use-as-transparent-proxy-for-virtualbox" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Use as transparent proxy for VirtualBox<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-108" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">用作VirtualBox的透明代理</font></font></font></font></h3>
+<details data-imtr-effect="1" open="">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">In VirtualBox's global settings, create a host-only network </font><code data-imtr-effect="1">vboxnet5</code><font data-imtr-effect="1"> with DHCP disabled.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-151" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">在VirtualBox的全局设置中，创建一个禁用DHCP的仅主机模式网络 <code data-imtr-effect="1">vboxnet5</code> 。</font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i vboxnet5 --tp 9040 --dns 9053
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i vboxnet5 --tp 9040 --dns 9053" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-use-as-transparent-proxy-for-firejail" class="anchor" aria-hidden="true" href="#use-as-transparent-proxy-for-firejail" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Use as transparent proxy for firejail<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-109" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">用作消防监狱的透明代理</font></font></font></font></h3>
+<details data-imtr-effect="1" open="">
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Create a bridge<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-152" lang="zh-CN"><font class="notranslate">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">创建网桥</font></font></font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo brctl addbr firejail5
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo brctl addbr firejail5" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>sudo lnxrouter -i firejail5 -g 192.168.55.1 --tp 9040 --dns 9053 
+firejail --net=firejail5 --dns=192.168.55.1 --blacklist=/var/run/nscd
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="sudo lnxrouter -i firejail5 -g 192.168.55.1 --tp 9040 --dns 9053 
+firejail --net=firejail5 --dns=192.168.55.1 --blacklist=/var/run/nscd" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Firejail's </font><code data-imtr-effect="1">/etc/resolv.conf</code><font data-imtr-effect="1"> doesn't obtain DNS from DHCP, so we need to assign.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-153" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">Firejail的 <code data-imtr-effect="1">/etc/resolv.conf</code> 不会从DHCP获取DNS，因此我们需要分配。</font></font></font></p>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">nscd is domain name cache service, which shouldn't be accessed from in jail here.<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-154" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner">NSCD 是域名缓存服务，不应在此处从监狱访问。</font></font></font></font></p>
+</details>
+<h3 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-cli-usage-and-other-features" class="anchor" aria-hidden="true" href="#cli-usage-and-other-features" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">CLI usage and other features<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-110" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">CLI 使用和其他功能</font></font></font></font></h3>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>Usage: lnxrouter &lt;options&gt;
+
+Options:
+    -h, --help              Show this help
+    --version               Print version number
+
+    -i &lt;interface&gt;          Interface to make NATed sub-network,
+                            and to provide Internet to
+                            (To create WiFi hotspot use '--ap' instead)
+    -o &lt;interface&gt;          Specify an inteface to provide Internet from.
+                            (See Notice 1)
+                            (Note using this with default DNS option may leak
+                            queries to other interfaces)
+    -n                      Do not provide Internet (See Notice 1)
+    --ban-priv              Disallow clients to access my private network
+    
+    -g &lt;ip&gt;                 This host's IPv4 address in subnet (mask is /24)
+                            (example: '192.168.5.1' or '5' shortly)
+    -6                      Enable IPv6 (NAT)
+    --no4                   Disable IPv4 Internet (not forwarding IPv4)
+                            (See Notice 1). Usually used with '-6'
+                            
+    --p6 &lt;prefix&gt;           Set IPv6 LAN address prefix (length 64) 
+                            (example: 'fd00:0:0:5::' or '5' shortly) 
+                            Using this enables '-6'
+                            
+    --dns &lt;ip&gt;|&lt;port&gt;|&lt;ip:port&gt;
+                            DNS server's upstream DNS.
+                            Use ',' to seperate multiple servers
+                            (default: use /etc/resolve.conf)
+                            (Note IPv6 addresses need '[]' around)
+    --no-dns                Do not serve DNS
+    --no-dnsmasq            Disable dnsmasq server (DHCP, DNS, RA)
+    --catch-dns             Transparent DNS proxy, redirect packets(TCP/UDP) 
+                            whose destination port is 53 to this host
+    --log-dns               Show DNS query log (dnsmasq)
+    --dhcp-dns &lt;IP1[,IP2]&gt;|no
+                            Set IPv4 DNS offered by DHCP (default: this host).
+    --dhcp-dns6 &lt;IP1[,IP2]&gt;|no
+                            Set IPv6 DNS offered by DHCP (RA) 
+                            (default: this host)
+                            (Note IPv6 addresses need '[]' around)
+                            Using both above two will enable '--no-dns' 
+    --hostname &lt;name&gt;       DNS server associate this name with this host.
+                            Use '-' to read name from /etc/hostname
+    -d                      DNS server will take into account /etc/hosts
+    -e &lt;hosts_file&gt;         DNS server will take into account additional 
+                            hosts file
+    --dns-nocache           DNS server no cache
+    
+    --mac &lt;MAC&gt;             Set MAC address
+    --random-mac            Use random MAC address
+ 
+    --tp &lt;port&gt;             Transparent proxy,
+                            redirect non-LAN TCP and UDP(not tested) traffic to
+                            port. (usually used with '--dns')
+    
+  WiFi hotspot options:
+    --ap &lt;wifi interface&gt; &lt;SSID&gt;
+                            Create WiFi access point
+    -p, --password &lt;password&gt;   
+                            WiFi password
+    --qr                    Show WiFi QR code in terminal (need qrencode)
+    
+    --hidden                Hide access point (not broadcast SSID)
+    --no-virt               Do not create virtual interface
+                            Using this you can't use same wlan interface
+                            for both Internet and AP
+    --virt-name &lt;name&gt;      Set name of virtual interface
+    -c &lt;channel&gt;            Channel number (default: 1)
+    --country &lt;code&gt;        Set two-letter country code for regularity
+                            (example: US)
+    --freq-band &lt;GHz&gt;       Set frequency band: 2.4 or 5 (default: 2.4)
+    --driver                Choose your WiFi adapter driver (default: nl80211)
+    -w &lt;WPA version&gt;        '2' for WPA2, '1' for WPA, '1+2' for both
+                            (default: 2)
+    --psk                   Use 64 hex digits pre-shared-key instead of
+                            passphrase
+    --mac-filter            Enable WiFi hotspot MAC address filtering
+    --mac-filter-accept     Location of WiFi hotspot MAC address filter list
+                            (defaults to /etc/hostapd/hostapd.accept)
+    --hostapd-debug &lt;level&gt; 1 or 2. Passes -d or -dd to hostapd
+    --isolate-clients       Disable wifi communication between clients
+    
+    --ieee80211n            Enable IEEE 802.11n (HT)
+    --ieee80211ac           Enable IEEE 802.11ac (VHT)
+    --ht_capab &lt;HT&gt;         HT capabilities (default: [HT40+])
+    --vht_capab &lt;VHT&gt;       VHT capabilities
+    
+    --no-haveged            Do not run haveged automatically when needed
+
+  Instance managing:
+    --daemon                Run in background
+    -l, --list-running      Show running instances
+    --lc, --list-clients &lt;id|interface&gt;     
+                            List clients of an instance. Or list neighbors of
+                            an interface, even if it isn't handled by us.
+                            (passive mode)
+    --stop &lt;id&gt;             Stop a running instance
+        For &lt;id&gt; you can use PID or subnet interface name.
+        You can get them with '--list-running'
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Usage: lnxrouter <options>
+
+Options:
+    -h, --help              Show this help
+    --version               Print version number
+
+    -i <interface>          Interface to make NATed sub-network,
+                            and to provide Internet to
+                            (To create WiFi hotspot use '--ap' instead)
+    -o <interface>          Specify an inteface to provide Internet from.
+                            (See Notice 1)
+                            (Note using this with default DNS option may leak
+                            queries to other interfaces)
+    -n                      Do not provide Internet (See Notice 1)
+    --ban-priv              Disallow clients to access my private network
+    
+    -g <ip>                 This host's IPv4 address in subnet (mask is /24)
+                            (example: '192.168.5.1' or '5' shortly)
+    -6                      Enable IPv6 (NAT)
+    --no4                   Disable IPv4 Internet (not forwarding IPv4)
+                            (See Notice 1). Usually used with '-6'
+                            
+    --p6 <prefix>           Set IPv6 LAN address prefix (length 64) 
+                            (example: 'fd00:0:0:5::' or '5' shortly) 
+                            Using this enables '-6'
+                            
+    --dns <ip>|<port>|<ip:port>
+                            DNS server's upstream DNS.
+                            Use ',' to seperate multiple servers
+                            (default: use /etc/resolve.conf)
+                            (Note IPv6 addresses need '[]' around)
+    --no-dns                Do not serve DNS
+    --no-dnsmasq            Disable dnsmasq server (DHCP, DNS, RA)
+    --catch-dns             Transparent DNS proxy, redirect packets(TCP/UDP) 
+                            whose destination port is 53 to this host
+    --log-dns               Show DNS query log (dnsmasq)
+    --dhcp-dns <IP1[,IP2]>|no
+                            Set IPv4 DNS offered by DHCP (default: this host).
+    --dhcp-dns6 <IP1[,IP2]>|no
+                            Set IPv6 DNS offered by DHCP (RA) 
+                            (default: this host)
+                            (Note IPv6 addresses need '[]' around)
+                            Using both above two will enable '--no-dns' 
+    --hostname <name>       DNS server associate this name with this host.
+                            Use '-' to read name from /etc/hostname
+    -d                      DNS server will take into account /etc/hosts
+    -e <hosts_file>         DNS server will take into account additional 
+                            hosts file
+    --dns-nocache           DNS server no cache
+    
+    --mac <MAC>             Set MAC address
+    --random-mac            Use random MAC address
+ 
+    --tp <port>             Transparent proxy,
+                            redirect non-LAN TCP and UDP(not tested) traffic to
+                            port. (usually used with '--dns')
+    
+  WiFi hotspot options:
+    --ap <wifi interface> <SSID>
+                            Create WiFi access point
+    -p, --password <password>   
+                            WiFi password
+    --qr                    Show WiFi QR code in terminal (need qrencode)
+    
+    --hidden                Hide access point (not broadcast SSID)
+    --no-virt               Do not create virtual interface
+                            Using this you can't use same wlan interface
+                            for both Internet and AP
+    --virt-name <name>      Set name of virtual interface
+    -c <channel>            Channel number (default: 1)
+    --country <code>        Set two-letter country code for regularity
+                            (example: US)
+    --freq-band <GHz>       Set frequency band: 2.4 or 5 (default: 2.4)
+    --driver                Choose your WiFi adapter driver (default: nl80211)
+    -w <WPA version>        '2' for WPA2, '1' for WPA, '1+2' for both
+                            (default: 2)
+    --psk                   Use 64 hex digits pre-shared-key instead of
+                            passphrase
+    --mac-filter            Enable WiFi hotspot MAC address filtering
+    --mac-filter-accept     Location of WiFi hotspot MAC address filter list
+                            (defaults to /etc/hostapd/hostapd.accept)
+    --hostapd-debug <level> 1 or 2. Passes -d or -dd to hostapd
+    --isolate-clients       Disable wifi communication between clients
+    
+    --ieee80211n            Enable IEEE 802.11n (HT)
+    --ieee80211ac           Enable IEEE 802.11ac (VHT)
+    --ht_capab <HT>         HT capabilities (default: [HT40+])
+    --vht_capab <VHT>       VHT capabilities
+    
+    --no-haveged            Do not run haveged automatically when needed
+
+  Instance managing:
+    --daemon                Run in background
+    -l, --list-running      Show running instances
+    --lc, --list-clients <id|interface>     
+                            List clients of an instance. Or list neighbors of
+                            an interface, even if it isn't handled by us.
+                            (passive mode)
+    --stop <id>             Stop a running instance
+        For <id> you can use PID or subnet interface name.
+        You can get them with '--list-running'" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-notice" class="anchor" aria-hidden="true" href="#notice" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Notice</font></h2>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>    Notice 1:   This script assume your host's default policy won't forward
+                packets, so the script won't explictly ban forwarding in any
+                mode. In some unexpected case (eg. mistaken configurations) may
+                cause unwanted packets leakage between 2 networks, which you
+                should be aware of if you want isolated network
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="    Notice 1:   This script assume your host's default policy won't forward
+                packets, so the script won't explictly ban forwarding in any
+                mode. In some unexpected case (eg. mistaken configurations) may
+                cause unwanted packets leakage between 2 networks, which you
+                should be aware of if you want isolated network" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-what-changes-are-done-to-linux-system" class="anchor" aria-hidden="true" href="#what-changes-are-done-to-linux-system" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">What changes are done to Linux system<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-111" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">对 Linux 系统进行了哪些更改</font></font></font></font></h2>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">On exit of a linux-router instance, script </font><strong data-imtr-effect="1">will do cleanup</strong><font data-imtr-effect="1">, i.e. undo most changes to system. Though, </font><strong data-imtr-effect="1">some</strong><font data-imtr-effect="1"> changes (if needed) will </font><strong data-imtr-effect="1">not</strong><font data-imtr-effect="1"> be undone, which are:</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-112" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在 linux-router 实例退出时，脚本将执行清理，即撤消对系统的大部分更改。但是，某些更改（如果需要）不会撤消，它们是：</font></font></font></p>
+<ol dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><code data-imtr-effect="1">/proc/sys/net/ipv4/ip_forward = 1</code><font data-imtr-effect="1"> and </font><code data-imtr-effect="1">/proc/sys/net/ipv6/conf/all/forwarding = 1</code><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-113" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <code data-imtr-effect="1">/proc/sys/net/ipv4/ip_forward = 1</code> 和 <code data-imtr-effect="1">/proc/sys/net/ipv6/conf/all/forwarding = 1</code> </font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">dnsmasq in Apparmor complain mode<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-114" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">Apparmor 抱怨模式下的 dnsmasq</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">hostapd in Apparmor complain mode<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-115" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">在 Apparmor 抱怨模式下的主机</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Kernel module </font><code data-imtr-effect="1">nf_nat_pptp</code><font data-imtr-effect="1"> loaded</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-116" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">内核模块 <code data-imtr-effect="1">nf_nat_pptp</code> 已加载</font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">The wifi device which is used to create hotspot is </font><code data-imtr-effect="1">rfkill unblock</code><font data-imtr-effect="1">ed</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-117" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">用于创建热点的 wifi 设备是 <code data-imtr-effect="1">rfkill unblock</code> ed</font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">WiFi country code, if user assigns<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-118" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">WiFi 国家/地区代码（如果用户分配）</font></font></font></font></li>
+</ol>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-meet-contributors-and-become-one-of-them" class="anchor" aria-hidden="true" href="#meet-contributors-and-become-one-of-them" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">Meet contributor(s) and become one of them<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-119" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">结识贡献者并成为他们中的一员</font></font></font></font></h2>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Visit </font><a href="https://garywill.github.io" rel="nofollow" data-imtr-effect="1"><strong>my homepage</strong> <g-emoji class="g-emoji" alias="house_with_garden" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e1.png" data-imtr-effect="1"><img class="emoji" alt="house_with_garden" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e1.png" width="20" height="20"></g-emoji></a><font data-imtr-effect="1"> to see </font><strong data-imtr-effect="1">more tools and projects</strong> <g-emoji class="g-emoji" alias="hammer_and_wrench" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" data-imtr-effect="1"><img class="emoji" alt="hammer_and_wrench" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" width="20" height="20"></g-emoji><font data-imtr-effect="1">.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-120" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">访问我的主页 <g-emoji class="g-emoji" alias="house_with_garden" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e1.png" data-imtr-effect="1"><img class="emoji" alt="house_with_garden" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e1.png" width="20" height="20"></g-emoji> 查看更多工具和项目 <g-emoji class="g-emoji" alias="hammer_and_wrench" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" data-imtr-effect="1"><img class="emoji" alt="hammer_and_wrench" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png" width="20" height="20"></g-emoji> 。</font></font></font></p>
+<blockquote data-imtr-effect="1">
+<p dir="auto" data-imtr-effect="1"><a href="https://github.com/garywill/receiving/blob/master/receiving_methods.md" data-imtr-effect="1"><g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" data-imtr-effect="1"><img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="20" height="20"></g-emoji> Buy me a coffee</a><font data-imtr-effect="1"> , this project took me lots of time! (</font><a href="https://github.com/garywill/receiving/blob/master/receiving_methods.md" data-imtr-effect="1"><g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" data-imtr-effect="1"><img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="20" height="20"></g-emoji> 扫码领红包并打赏一个!</a><font data-imtr-effect="1">)</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-121" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" data-imtr-effect="1"><img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="20" height="20"></g-emoji> 给我买杯咖啡，这个项目花了我很多时间！( <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" data-imtr-effect="1"><img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="20" height="20"></g-emoji> 扫码领红包并打赏一个!)</font></font></font></p>
+<p dir="auto" data-imtr-effect="1"><g-emoji class="g-emoji" alias="clinking_glasses" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f942.png" data-imtr-effect="1"><img class="emoji" alt="clinking_glasses" src="https://github.githubassets.com/images/icons/emoji/unicode/1f942.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> ( ^_^) o自自o (^_^ ) </font><g-emoji class="g-emoji" alias="beers" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f37b.png" data-imtr-effect="1"><img class="emoji" alt="beers" src="https://github.githubassets.com/images/icons/emoji/unicode/1f37b.png" width="20" height="20"></g-emoji></p>
+</blockquote>
+<p dir="auto" data-imtr-effect="1"><g-emoji class="g-emoji" alias="handshake" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" data-imtr-effect="1"><img class="emoji" alt="handshake" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> Bisides, thank </font><a href="https://github.com/oblique/create_ap" data-imtr-effect="1">create_ap</a><font data-imtr-effect="1"> by </font><a href="https://github.com/oblique" data-imtr-effect="1">oblique</a><font data-imtr-effect="1">. This script was forked from create_ap. Now they are quite different. (See </font><code data-imtr-effect="1">history</code><font data-imtr-effect="1"> branch for how I modified create_ap). </font><g-emoji class="g-emoji" alias="handshake" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" data-imtr-effect="1"><img class="emoji" alt="handshake" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> Also thank those who contributed to that project.</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-123" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <g-emoji class="g-emoji" alias="handshake" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" data-imtr-effect="1"><img class="emoji" alt="handshake" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" width="20" height="20"></g-emoji> 双边，感谢斜create_ap.此脚本是从create_ap分叉而来的。现在他们完全不同了。（请参阅 <code data-imtr-effect="1">history</code> 分支了解我如何修改create_ap）。 <g-emoji class="g-emoji" alias="handshake" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" data-imtr-effect="1"><img class="emoji" alt="handshake" src="https://github.githubassets.com/images/icons/emoji/unicode/1f91d.png" width="20" height="20"></g-emoji> 还要感谢那些为该项目做出贡献的人。</font></font></font></p>
+<p dir="auto" data-imtr-effect="1"><g-emoji class="g-emoji" alias="man_technologist" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f468-1f4bb.png" data-imtr-effect="1"><img class="emoji" alt="man_technologist" src="https://github.githubassets.com/images/icons/emoji/unicode/1f468-1f4bb.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> You can be contributor, too!</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-124" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <g-emoji class="g-emoji" alias="man_technologist" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f468-1f4bb.png" data-imtr-effect="1"><img class="emoji" alt="man_technologist" src="https://github.githubassets.com/images/icons/emoji/unicode/1f468-1f4bb.png" width="20" height="20"></g-emoji> 您也可以成为贡献者！</font></font></font></p>
+<ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><g-emoji class="g-emoji" alias="leaves" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" data-imtr-effect="1"><img class="emoji" alt="leaves" src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> There're some TO-DOs listed, in both </font><a href="#todo" data-imtr-effect="1">readme TODO</a><font data-imtr-effect="1"> and </font><a href="https://github.com/garywill/linux-router/search?q=TODO&amp;type=code" data-imtr-effect="1">in the code file</a><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-125" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <g-emoji class="g-emoji" alias="leaves" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" data-imtr-effect="1"><img class="emoji" alt="leaves" src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" width="20" height="20"></g-emoji> 在自述文件TODO和代码文件中都列出了一些待办事项</font></font></font></li>
+<li data-imtr-effect="1"><g-emoji class="g-emoji" alias="leaves" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" data-imtr-effect="1"><img class="emoji" alt="leaves" src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> Also some </font><a href="https://github.com/garywill/linux-router/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement" data-imtr-effect="1">unfulfilled enhancements in the Issues</a><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-126" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <g-emoji class="g-emoji" alias="leaves" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" data-imtr-effect="1"><img class="emoji" alt="leaves" src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" width="20" height="20"></g-emoji> 问题中还有一些未完成的增强功能</font></font></font></li>
+<li data-imtr-effect="1"><g-emoji class="g-emoji" alias="raising_hand_man" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f64b-2642.png" data-imtr-effect="1"><img class="emoji" alt="raising_hand_man" src="https://github.githubassets.com/images/icons/emoji/unicode/1f64b-2642.png" width="20" height="20"></g-emoji><font data-imtr-effect="1"> Contributions are not limited to coding. There're </font><a href="https://github.com/garywill/linux-router/issues" data-imtr-effect="1">some posts and questions</a><font data-imtr-effect="1"> that need more people to answer</font><font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-127" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1"> <g-emoji class="g-emoji" alias="raising_hand_man" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f64b-2642.png" data-imtr-effect="1"><img class="emoji" alt="raising_hand_man" src="https://github.githubassets.com/images/icons/emoji/unicode/1f64b-2642.png" width="20" height="20"></g-emoji> 贡献不仅限于编码。有些帖子和问题需要更多人回答</font></font></font></li>
+</ul>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-todo" class="anchor" aria-hidden="true" href="#todo" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">TODO</font></h2>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Sooner is better:<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-128" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">越早越好：</font></font></font></font></p>
+<ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">Detect firewalld and make sure it won't interfere our interface<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-129" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">检测防火墙并确保它不会干扰我们的界面</font></font></font></font></li>
+</ul>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Future:</font></p>
+<ul dir="auto" data-imtr-effect="1">
+<li data-imtr-effect="1"><font data-imtr-effect="1">WPA3</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Global IPv6</font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Explictly ban forwarding if not needed<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-130" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">如果不需要，明确禁止转发</font></font></font></font></li>
+<li data-imtr-effect="1"><font data-imtr-effect="1">Bring bridging method back<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-131" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">带回桥接方法</font></font></font></font></li>
+</ul>
+<h2 tabindex="-1" dir="auto" data-imtr-effect="1"><a id="user-content-license" class="anchor" aria-hidden="true" href="#license" data-imtr-effect="1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" data-imtr-effect="1"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font data-imtr-effect="1">License</font></h2>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">linux-router is LGPL licensed<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-132" data-imtr-effect="1" lang="zh-CN"><font class="notranslate" data-imtr-effect="1">&nbsp;</font><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-inline-wrapper-theme-marker imtr-target-translation-inline-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">Linux-router是LGPL许可的</font></font></font></font></p>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>linux-router
+Copyright (C) 2018  garywill
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="linux-router
+Copyright (C) 2018  garywill
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA" tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+<p dir="auto" data-imtr-effect="1"><font data-imtr-effect="1">Upstream create_ap was BSD licensed<font class="notranslate imtr-target-wrapper" id="imtr-target-wrapper-133" data-imtr-effect="1" lang="zh-CN"><br><font class="notranslate imtr-target-translation-theme-marker imtr-target-translation-block-wrapper-theme-marker imtr-target-translation-block-wrapper" data-imtr-effect="1"><font class="notranslate imtr-target-inner imtr-target-translation-theme-marker-inner" data-imtr-effect="1">上游create_ap已获得 BSD 许可</font></font></font></font></p>
+<details data-imtr-effect="1" open="">
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-imtr-effect="1"><pre class="notranslate" data-imtr-effect="1"><code>Copyright (c) 2013, oblique
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Copyright (c) 2013, oblique
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." tabindex="0" role="button" data-imtr-effect="1" data-imtr-exclude-mark="1">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</details>
+
+                    </div>
+                        
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </body>
+</html>
